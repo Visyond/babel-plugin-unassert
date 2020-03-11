@@ -79,6 +79,7 @@ module.exports = (babel) => {
         const callee = nodePath.get('callee');
         if ((callee.isIdentifier() && callee.equals('name', 'assert')) ||
               callee.matchesPattern('assert', true) ||
+              callee.matchesPattern('global.assert') ||
               callee.matchesPattern('console.assert')) {
           if (nodePath.parentPath && nodePath.parentPath.isExpressionStatement()) {
             nodePath.remove();
